@@ -1,0 +1,267 @@
+<!DOCTYPE>
+<html>
+<head>
+
+<!-- Include meta tag to ensure proper rendering and touch zooming -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="themes/theme6.min.css" />
+<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<link rel="stylesheet" href = "style.css"/>
+
+
+<script>
+//$(document).on("pagecreate","#offers",function(){
+ // $(document).on("scrollstart",function(){
+   
+ // });
+//});
+</script>
+<style>
+
+#map{
+height:500px;
+width:100%;}
+</style>
+</head>
+
+<body>
+
+<div data-role="page" id="main" data-title="Αρχική σελίδα"class="ui-btn-active ui-state-persist">
+
+  <div data-role="header" >
+  <div class= "ui-grid-solo ui-responsive ">
+  <center> <img src="logo.jpg"  style="min-height:80px; max-width:100%; "></center>
+   <div data-role="navbar">
+    <ul>
+      <li><a href="#main"  data-icon="home" class="ui-btn-active ui-state-persist ui-alt-icon"><b>Αρχική</b> </a></li>
+      <li><a href="#offers" data-icon="star"data-transition="slidefade" class="ui-alt-icon"><b>Προσφορές</b></a></li>
+      <li><a href="#About" data-icon="info" data-transition="slidefade" class="ui-alt-icon"><b>About us</b></a></li>
+    </ul>
+	</div>
+  </div>
+  </div>
+  <div data-role="content">
+
+	 <div class="ui-grid-solo">
+      <div class="ui-block-a ">
+       <form name="formInput" method="post"  >
+	   <label for="apo" class="ui-hidden-accessible">Apo..</label>
+      <input type="text" name="apo" id="apo" placeholder="Από...">
+	  <label for="pros" class="ui-hidden-accessible">Pros..</label>
+      <input type="text" name="pros" id="pros" value="" placeholder="Προς...">
+	
+	  </form>
+     </div>
+    </div>
+	<div class="ui-grid-solo">
+	<div class="ui-block-a">
+	<form class="ui-filterable">
+		
+		<input type="date" name="date" id="anaxwrisi"   placeholder="Αναχώρηση..">   
+		<input type="date" name="date" id="anaxwrisi" onFocus="geolocate()" placeholder="Επιστροφή..">   
+	</form>
+	</div>
+  </div>
+  <div class="ui-grid-a" >
+  <div class="ui-block-a">
+  <label for="switch"> Με επιστροφή?</label>
+ <input type="checkbox" data-role="flipswitch" name="switch" id="switch" data-on-text="Ναι" data-off-text="Όχι">
+
+
+  </div>
+  <div class="ui-block-b">
+   <label for="airports">Κοντινά αεροδρόμια</label>
+ <input type="checkbox" name="airports" id="airports">
+  </div>
+    </div>
+	<div class="ui-grid-solo">
+	<form>
+	<fieldset class="ui-field-contain">
+	<label for="status">Επιλέξτε θέση</label>
+<select name="status" id="status"  data-mini="true" data-inline="true">
+<option value="ec">Οικονομική</option>
+<option value="a"> Α Class</option>
+<option value="b"> B Class</option>
+
+</select>
+</fieldset>
+</form>
+</div>
+	<div class="ui-grid-solo">
+	 <a href="#map-page"  class="ui-btn">Αναζήτηση</a>
+	</div>
+	</div>
+  <!--<div  data-role="footer">
+  <h5> AirTickets</h5>
+  </div>-->
+  
+  
+  
+  </div>
+  <!---------------------NEA SELIDA-------------------------------------->
+  <div data-role="page" id="offers"  data-title="Προσφορές">
+   <div data-role="header" >
+ 
+ <a href="#main" class="ui-btn ui-btn-b ui-corner-all ui-shadow ui-alt-icon ui-icon-back ui-btn-icon-left">Πίσω</a>
+ <h3 style="color:#000000;text-align:left;">Προσφορές της εβδομάδας.</h3>
+  </div>
+  <div data-role="content">
+ 
+    <ul data-role="listview" data-inset="true">
+      <li data-role="divider">Προσφορές</li>
+      <li>
+        <a href="#">
+        <img src="vienna.jpg" style="min-height:80px; max-width=10px;">
+        <h2>Βιέννη</h2>
+        <p>Πετάξτε 	τωρα για την Βιεννη με μόλις 29.90!!!!</p>
+        </a>
+        <a href="#reservation" data-transition="pop" data-icon="info">Information</a>
+      </li>
+      <li>
+        <a href="#">
+        <img src="ny.jpg "style="min-height:80px; max-width=10px;">
+        <h2>Νέα Υόρκη</h2>
+        <p>Καταπληκτικές Διακοπές στο βερολίνο .</p>
+        </a>
+        <a href="#reservation" data-transition="pop" data-icon="info">Information</a>
+      </li>
+	   <li>
+        <a href="#">
+        <img src="paris.jpg" style="min-height:80px; max-width=10px;">
+        <h2>Παρίσι</h2>
+        <p>Καταπληκτικές Διακοπές στο βερολίνο .</p>
+        </a>
+        <a href="#reservation" data-transition="pop" data-icon="info">Information</a>
+      </li>
+	   <li>
+        <a href="#">
+        <img src="berlin.jpg"style="min-height:80px; max-width=10px;">
+        <h2>Βερολίνο</h2>
+        <p>Καταπληκτικές Διακοπές στο βερολίνο .</p>
+        </a>
+        <a href="#reservation" data-transition="pop" data-icon="info">Information</a>
+      </li>
+	   <li>
+        <a href="#">
+        <img src="malta.jpg" style="min-height:80px; max-width=10px;">
+        <h2>Μάλτα</h2>
+        <p>Καταπληκτικές Διακοπές στο βερολίνο .</p>
+        </a>
+        <a href="#reservation" data-transition="pop" data-icon="info">Information</a>
+      </li>
+	   <li>
+        <a href="#">
+        <img src="village.jpg" style="min-height:80px; max-width=10px;">
+        <h2>Φινλανδία</h2>
+        <p> Διακοπές στο χωριό του Αι Βασίλη.</p>
+        </a>
+        <a href="#reservation" data-transition="pop" data-icon="info">Information</a>
+      </li>
+	   <li>
+        <a href="#">
+        <img src="kopegxagi.jpg" style="min-height:80px; max-width=10px;">
+        <h2>Κοπεγχάγη </h2>
+        <p> Διακοπές στη Κοπεγχάγη .</p>
+        </a>
+        <a href="#reservation" data-transition="pop" data-icon="info">Information</a>
+      </li>
+	    <li>
+        <a href="#">
+        <img src="barcelona.jpg" style="min-height:80px; max-width=10px;">
+        <h2>Βαρκελώνη</h2>
+        <p>Καταπληκτικές Διακοπές στη Βαρκελώνη .</p>
+        </a>
+        <a href="#reservation" data-transition="pop" data-icon="info">Information</a>
+      </li>
+	    <li>
+        <a href="#">
+        <img src="amsterdam.jpg" style="min-height:80px; max-width=10px;">
+        <h2>Amsterdam</h2>
+        <p>Καταπληκτικές Διακοπές στην Ολλανδία .</p>
+        </a>
+        <a href="#reservation" data-transition="pop" data-icon="info">Information</a>
+      </li>
+	    <li>
+        <a href="#">
+        <img src="barsobia.jpg" style="min-height:80px; max-width=10px;">
+        <h2>Βαρσοβία</h2>
+        <p>Καταπληκτικές Διακοπές στη Πολωνία <3 .</p>
+        </a>
+        <a href="#reservation" data-transition="pop" data-icon="info">Information</a>
+      </li>
+    </ul>
+  
+  </div>
+  <div data-role="footer">
+    <h5> AirTickets</h5>
+  </div>
+  </div>
+  <!---------------------------------NEA SELIDA-------------------------------------->
+  <div data-role="page" id="reservation" data-dialog="true">
+  <div data-role="main" class="ui-content">
+  <h3>Πληροφορίες</h3>
+    <p><br>	Ωρα Αναχώρησης:</br>
+		<br>Ωρα Άφιξης:</br>
+	<br>	Τιμή: </br>
+	</p>
+    <a href="#" class="ui-btn ui-btn-inline ui-btn-b  ui-shadow ui-corner-all ui-icon-check ui-btn-icon-left ui-btn-inline ui-mini" data-rel="check">Συνέχεια</a>
+    <a href="#" class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-btn-inline ui-mini" data-rel="back">Ακύρωση</a>
+  </div>
+  </div>
+    <!---------------------------------NEA SELIDA-------------------------------------->
+
+   <div data-role="page" id="About"  data-title="About">
+   <div data-role="header">
+ <a href="#main" class="ui-btn ui-btn-b ui-corner-all ui-shadow ui-alt-icon ui-icon-back ui-btn-icon-left">Πίσω</a>
+   <h1> About</h1>
+  </div>
+	  
+	  <div data-role="content"> 
+	  <br><li >icsd12049 </li></br>
+	  <li> Evi Dimitropoulou</li></br>
+	 <li> email: icsd12049@icsd.aegean.gr</li></br>
+    <h3>Για περισσότερες πληροφορίες: </h3>
+    <li> phone: 69_*_*_*_*_*_*</li></br>
+	  
+	  
+	  <div data-role="footer">
+	  <h3><i> AirTickets</i></h3>
+    </div>
+
+  </div>
+   </div>
+    <!---------------------------------NEA SELIDA-------------------------------------->
+   <div data-role="page" id="map-page"  data-title="map-page">
+   
+   <div data-role="header" >
+ <a href="#main" class="ui-btn ui-btn-b ui-corner-all ui-shadow ui-alt-icon ui-icon-back ui-btn-icon-left">Πίσω</a>
+  <h1> Map</h1>
+  </div>
+
+<div data-role="content">
+	  <script>
+	function initMap() {
+        var uluru = {lat: -25.363, lng: 131.044};
+        var map = new google.maps.Map(document.getElementById('map-page'), {
+          zoom: 4,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+ </div>
+	 <script async defer src="https://maps.googleapis.com/maps/api/js?&callback=initMap"></script>
+
+	
+  </div>
+  </body>
+  
+
+</html>
+
